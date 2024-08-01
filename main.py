@@ -12,7 +12,7 @@ data = requests.get("https://demo.transiter.dev/systems/us-ny-subway/stops/D28")
 
 firstStopTime = []
 for train_details in data["stopTimes"]:
-    if train_details["trip"]["destination"]["name"] == "96 St" and train_details["trip"]["destination"]["name"] == "96 St":
+    if train_details["trip"]["destination"]["name"] == "96 St":
         firstStopTime.append(train_details)
 
 for i in firstStopTime:
