@@ -1,9 +1,14 @@
-#Work is still in progress
-import requests
 from pprint import pprint
 import requests, time
 from datetime import datetime, timedelta
 #Need to import twillio
+from twilio.rest import Client
+import os
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
 
 now = datetime.now()
 now_plus_10 = now + timedelta(minutes = 10)
@@ -12,8 +17,10 @@ data = requests.get("https://demo.transiter.dev/systems/us-ny-subway/stops/D28")
 
 firstStopTime = []
 for train_details in data["stopTimes"]:
-    if train_details["trip"]["destination"]["name"] == "96 St":
+    if train_details["trip"]["destination"]["name"] == "96 St" or train_details["trip"]["destination"]["name"] == "Bedford Park Blvd":
         firstStopTime.append(train_details)
+
+notification_message= []
 
 for i in firstStopTime:
     arrival_time = int(i["arrival"]["time"])
@@ -22,4 +29,20 @@ for i in firstStopTime:
     expected_time = now + timedelta(minutes=arrival_time_in_minutes)
     ex_time = expected_time.time()
     timevalue_12hour = ex_time.strftime("%I:%M %p")
-    print(f"The {i["trip"]["route"]["id"]} arrives at {timevalue_12hour}, this train goes to {i["destination"]["name"]}")
+    # print(f"The {i["trip"]["route"]["id"]} arrives at {timevalue_12hour}, this train goes to {i["destination"]["name"]}")
+    text = f"The {i["trip"]["route"]["id"]} arrives at {timevalue_12hour}, this train goes to {i["destination"]["name"]}"
+    notification_message.append(text)
+
+if len(notification_message) == 0:
+    print("There are no trains at this time")
+else:
+    for i in range(int(len(firstStopTime)/2)):
+        client = Client(os.getenv("ACCOUNT_SID"), os.getenv("AUTH_TOKEN"))
+        message = client.messages.create(
+            from_='whatsapp:+14155238886',
+            body=notification_message[i],
+            to='whatsapp:+13479649483'
+        )
+        print(message.status)
+        print(message.sid)
+
