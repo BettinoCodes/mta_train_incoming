@@ -39,9 +39,9 @@ else:
     for i in range(int(len(firstStopTime)/2)):
         client = Client(os.getenv("ACCOUNT_SID"), os.getenv("AUTH_TOKEN"))
         message = client.messages.create(
-            from_='whatsapp:+14155238886',
+            from_='whatsapp:+twilio number',
             body=notification_message[i],
-            to='whatsapp:+13479649483'
+            to='whatsapp:+yournumber'
         )
         print(message.status)
         print(message.sid)
