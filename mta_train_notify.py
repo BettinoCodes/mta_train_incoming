@@ -29,7 +29,7 @@ for i in firstStopTime:
     ex_time = expected_time.time()
     timevalue_12hour = ex_time.strftime("%I:%M %p")
     # print(f"The {i["trip"]["route"]["id"]} arrives at {timevalue_12hour}, this train goes to {i["destination"]["name"]}")
-    text = f"The {i["trip"]["route"]["id"]} arrives at {timevalue_12hour}, this train goes to {i["destination"]["name"]}"
+    text = f"The {i['trip']['route']['id']} arrives at {timevalue_12hour}, this train goes to {i['destination']['name']}"
     notification_message.append(text)
 
 if len(notification_message) == 0:
