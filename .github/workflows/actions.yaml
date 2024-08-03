@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  account_sid: ${{ vars.ACCOUNT_SID }}
+  account_sid: monkey
   auth_token: ${{ vars.AUTH_TOKEN }}
   twilio_number: ${{ vars.TWILIO_NUMBER }}
   my_phone_number: ${{ vars.MY_PHONE_NUMBER }}
