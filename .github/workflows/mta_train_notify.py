@@ -1,4 +1,3 @@
-from pprint import pprint
 import requests, time
 from datetime import datetime, timedelta
 #Need to import twillio
