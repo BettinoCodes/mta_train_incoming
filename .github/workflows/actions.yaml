@@ -3,7 +3,7 @@ name: Run Python Script
 on:
   workflow_dispatch:
   schedule:
-    - cron: '58 22 * * *'  # Runs at 5:58 PM UTC every day
+    - cron: '10 23 * * *'  # Runs at 5:58 PM UTC every day
 
 env:
   account_sid: ${{ secrets.ACCOUNT_SID}}
