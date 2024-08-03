@@ -31,7 +31,7 @@ jobs:
         env:
           ACCOUNT_SID: ${{ vars.ACCOUNT_SID }}
           AUTH_TOKEN: ${{ vars.AUTH_TOKEN }}
-          TWILIO_NUMBER: ${{ varss.TWILIO_NUMBER }}
+          TWILIO_NUMBER: ${{ vars.TWILIO_NUMBER }}
           MY_PHONE_NUMBER: ${{ vars.MY_PHONE_NUMBER }}
         run: |
           python mta_train_notify.py
