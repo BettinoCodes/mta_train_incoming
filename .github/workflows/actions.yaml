@@ -4,17 +4,17 @@ on:
   workflow_dispatch:
 
 env:
-  account_sid: monkey
-  auth_token: ${{ vars.AUTH_TOKEN }}
-  twilio_number: ${{ vars.TWILIO_NUMBER }}
-  my_phone_number: ${{ vars.MY_PHONE_NUMBER }}
+  account_sid: ${{ secrets.ACCOUNT_SID}}
+  auth_token: ${{ secrets.AUTH_TOKEN }}
+  twilio_number: ${{ secrets.TWILIO_NUMBER }}
+  my_phone_number: ${{ secrets.MY_PHONE_NUMBER }}
 
 jobs:
   run-python:
     runs-on: ubuntu-latest
     steps:
-      - run: echo 'Hi ${{ env.account_sid}}'
-      - run: echo 'Hi ${{ env.twilio_number}}'
+      - run: echo 'Hi ${{ secrets.account_sid}}'
+      - run: echo 'Hi ${{ env.auth_token}}'
       
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -32,9 +32,10 @@ jobs:
 
       - name: Run Python Script
         env:
-          account_sid: ${{ vars.ACCOUNT_SID }}
-          auth_token: ${{ vars.AUTH_TOKEN }}
-          twilio_number: ${{ vars.TWILIO_NUMBER }}
-          my_phone_number: ${{ vars.MY_PHONE_NUMBER }}
+          account_sid: ${{ secrets.ACCOUNT_SID}}
+          auth_token: ${{ secrets.AUTH_TOKEN }}
+          twilio_number: ${{ secrets.TWILIO_NUMBER }}
+          my_phone_number: ${{ secrets.MY_PHONE_NUMBER }}
+
         run: |
           python mta_train_notify.py
