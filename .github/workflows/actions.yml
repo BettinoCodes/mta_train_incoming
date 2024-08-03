@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
 
 env:
-  ACCOUNT_SID: ${{ vars.ACCOUNT_SID }}
-  AUTH_TOKEN: ${{ vars.AUTH_TOKEN }}
-  TWILIO_NUMBER: ${{ vars.TWILIO_NUMBER }}
-  MY_PHONE_NUMBER: ${{ vars.MY_PHONE_NUMBER }}
+  account_sid: ${{ vars.ACCOUNT_SID }}
+  auth_token: ${{ vars.AUTH_TOKEN }}
+  twilio_number: ${{ vars.TWILIO_NUMBER }}
+  my_phone_number: ${{ vars.MY_PHONE_NUMBER }}
 
 jobs:
   run-python:
@@ -29,9 +29,9 @@ jobs:
 
       - name: Run Python Script
         env:
-          ACCOUNT_SID: ${{ vars.ACCOUNT_SID }}
-          AUTH_TOKEN: ${{ vars.AUTH_TOKEN }}
-          TWILIO_NUMBER: ${{ vars.TWILIO_NUMBER }}
-          MY_PHONE_NUMBER: ${{ vars.MY_PHONE_NUMBER }}
+          account_sid: ${{ vars.ACCOUNT_SID }}
+          auth_token: ${{ vars.AUTH_TOKEN }}
+          twilio_number: ${{ vars.TWILIO_NUMBER }}
+          my_phone_number: ${{ vars.MY_PHONE_NUMBER }}
         run: |
           python mta_train_notify.py
