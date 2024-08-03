@@ -1,7 +1,5 @@
-from pprint import pprint
 import requests, time
 from datetime import datetime, timedelta
-#Need to import twillio
 from twilio.rest import Client
 import os
 from dotenv import load_dotenv
@@ -39,10 +37,9 @@ else:
     for i in range(int(len(firstStopTime)/2)):
         client = Client(os.getenv("ACCOUNT_SID"), os.getenv("AUTH_TOKEN"))
         message = client.messages.create(
-            from_='whatsapp:+twilio number',
+            from_=f'whatsapp:+{os.getenv("TWILIO_NUMBER")}',
             body=notification_message[i],
-            to='whatsapp:+yournumber'
+            to=F'whatsapp:+{os.getenv("MY_PHONE_NUMBER")}'
         )
         print(message.status)
         print(message.sid)
-
