@@ -13,6 +13,9 @@ jobs:
   run-python:
     runs-on: ubuntu-latest
     steps:
+      - run: echo 'Hi ${{ env.account_sid}}'
+      - run: echo 'Hi ${{ env.twilio_number}}'
+      
       - name: Checkout Code
         uses: actions/checkout@v4
   
@@ -20,7 +23,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-
+      
       - name: Install Dependencies
         run: |
           python -m pip install requests
