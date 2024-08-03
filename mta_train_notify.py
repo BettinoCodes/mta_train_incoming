@@ -36,11 +36,11 @@ if len(notification_message) == 0:
     print("There are no trains at this time")
 else:
     for i in range(int(len(firstStopTime)/2)):
-        client = Client(os.getenv("ACCOUNT_SID"), os.getenv("AUTH_TOKEN"))
+        client = Client(os.environ["ACCOUNT_SID"], os.environ["AUTH_TOKEN"])
         message = client.messages.create(
-            from_=f'whatsapp:+{os.getenv("TWILIO_NUMBER")}',
+            from_=f'whatsapp:+{os.environ["TWILIO_NUMBER"]}',
             body=notification_message[i],
-            to=F'whatsapp:+{os.getenv("MY_PHONE_NUMBER")}'
+            to=F'whatsapp:+{os.environ["MY_PHONE_NUMBER"]}'
         )
         print(message.status)
         print(message.sid)
