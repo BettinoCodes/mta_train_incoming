@@ -4,4 +4,10 @@ on:
   workflow_dispatch:
 
 env:
-  
+  account_sid: ${{ sccrets.ACCOUNT_SID}}
+  auth_token: ${{ sccrets.AUTH_TOKEN}}
+  twilio_number: ${{ secrets.TWILIO_NUMBER}}
+  my_number: ${{ sccrets.MY_PHONE_NUMBER}}
+
+jobs:
+
