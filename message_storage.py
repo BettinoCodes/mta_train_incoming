@@ -18,7 +18,7 @@ class MessageStorage:
             arrival_time = int(i["arrival"]["time"])
             arrival_time_in_minutes = int((arrival_time - time.time()) / 60)
             now = datetime.now()
-            expected_time = now + timedelta(minutes=arrival_time_in_minutes) - timedelta(hours=5)
+            expected_time = now + timedelta(minutes=arrival_time_in_minutes) - timedelta(hours=4)
             ex_time = expected_time.time()
             timevalue_12hour = ex_time.strftime("%I:%M %p")
             # print(f"The {i["trip"]["route"]["id"]} arrives at {timevalue_12hour}, this train goes to {i["destination"]["name"]}")
