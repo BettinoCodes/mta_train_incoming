@@ -2,6 +2,9 @@ name: Run Python Script
 
 on:
   workflow_dispatch:
+  schedule:
+      - cron: '30 14 * * *' #minute, hour, day, day of month, day of week
+            
 
 env:
   account_sid: ${{ secrets.ACCOUNT_SID}}
@@ -31,11 +34,6 @@ jobs:
           python -m pip install python-dotenv
 
       - name: Run Python Script
-        env:
-          account_sid: ${{ secrets.ACCOUNT_SID}}
-          auth_token: ${{ secrets.AUTH_TOKEN }}
-          twilio_number: ${{ secrets.TWILIO_NUMBER }}
-          my_phone_number: ${{ secrets.MY_PHONE_NUMBER }}
 
         run: |
           python mta_train_notify.py
