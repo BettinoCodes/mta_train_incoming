@@ -8,10 +8,10 @@ class NotificationManager:
     attributes related to sending them
     """
     def __init__(self) -> None:
-          self.acc_sid = os.getenv("ACCOUNT_SID")
-          self.auth_token = os.getenv("AUTH_TOKEN")
-          self.my_phone = os.getenv("MY_PHONE_NUMBER")
-          self.twilio_number = os.getenv("TWILIO_NUMBER")
+          self.acc_sid = os.environ["ACCOUNT_SID"]
+          self.auth_token = os.environ["AUTH_TOKEN"]
+          self.my_phone = os.environ["MY_PHONE_NUMBER"]
+          self.twilio_number = os.environ["TWILIO_NUMBER"]
 
     def send_messages_from_list(self, list_of_times):
         """This function is meant to send all of the data in the list individually as a message"""
