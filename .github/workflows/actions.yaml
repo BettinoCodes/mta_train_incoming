@@ -1,9 +1,9 @@
 name: Run Python Script
 
-on:
-  workflow_dispatch:
-  schedule:
-      - cron: '30 10 * * *' #minute, hour, day, day of month, day of week
+#on:
+  #workflow_dispatch:
+  #schedule:
+      #- cron: '30 10 * * *' #minute, hour, day, day of month, day of week
             
 
 env:
